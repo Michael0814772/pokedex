@@ -28,6 +28,9 @@ function Pokedex() {
                 let result = data.results;
                 setpokemonData(result);
             })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     return (
@@ -38,7 +41,7 @@ function Pokedex() {
                         id++
                         const images = `${IMAGE_API_URL}${id}.png`;
                         return (
-                            <PokemonCard pokemon={pokemon} images={images} id={id} key={pokemon.name}/>
+                            <PokemonCard pokemon={pokemon} images={images} id={id} key={pokemon.name} />
                         )
                     })}
                 </Grid>

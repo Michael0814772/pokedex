@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { POKEMON_API_URL } from '../config/Index';
 
-
 const useStyles = makeStyles((theme) => ({
     pokedexContainer: {
         height: '100vh',
@@ -17,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     textTitle: {
         textTransform: 'upperCase',
         fontFamily: 'Fantasy',
-        marginTop: -50
+        marginTop: -50,
+        fontSize: `calc(18px + 2vmin)`
     },
     pokemonImage: {
         width: '200px',
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function PokemonDetails() {
+export const PokemonDetails = (props) => {
 
     const classess = useStyles();
 
@@ -56,6 +56,7 @@ function PokemonDetails() {
             .then((data) => {
                 setPokemonDetails(data)
             })
+            .catch(err => console.log(err))
     }, [id])
 
     // distructure the pokemonDetails Data
@@ -116,5 +117,7 @@ function PokemonDetails() {
         </Box>
     )
 }
+
+
 
 export default PokemonDetails
